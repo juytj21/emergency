@@ -2,15 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>응급 상황 신고</title>
+    <style>
+        body {
+            background-color: #fffbfa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            width: 400px;
+            background: #ffffff;
+            padding: 5px 20px 25px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 26px;
+            font-weight: bold;
+            margin: 20px;
+            text-align: center;
+        }
+        label {
+            padding-left: 10px;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #5d5d5d;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 1px solid #d0d0d0;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .row {
+            display: flex;
+        }
+        #latitude {
+            margin-right: 10px;
+        }
+        #longitude {
+            margin-left: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+            border: 1px solid #d0d0d0;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 25px;
+            box-sizing: border-box;
+        }
+        .submit {
+            width: 100%;
+            height: 50px;
+            background-color: #e53700;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .submit:hover {
+            background-color: #d00000;
+        }
+    </style>
 </head>
 <body>
 <form action="recommend_hospital" enctype="application/x-www-form-urlencoded">
+    <h1>응급 상황 신고</h1>
+    <label for="request">응급상황 Request</label>
+    <textarea id="request" name="request">사고나 났어요. 머리에 피가 납니다.</textarea>
 
-    <input type="text" name="request" value="교통사고가 났어요 머리에 피가 많이나고 있습니다.">
-    <input type="text" name="latitude" value="37.538435245262626">
-    <input type="text" name="longitude" value="126.98982802695484">
-    <input type="submit" value="Submit">
+    <div class="row">
+        <div id="latitude">
+            <label for="latitude">위도 Latitude</label>
+            <input type="text" name="latitude" value="37.538435245262626">
+        </div>
+        <div id="longitude">
+            <label for="longitude">경도 Longitude</label>
+            <input type="text" name="longitude" value="126.98982802695484">
+        </div>
+    </div>
+
+    <input class="submit" type="submit" value="Submit">
 </form>
 </body>
 </html>

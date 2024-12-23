@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recommended Hospitals</title>
+    <style>
+        body {
+            background-color: #fffbfa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 0;
+        }
+        h1 {
+            margin: 50px 0 20px 0;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 80%;
+            background-color: white;
+            font-size: 14px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        th {
+            border: 1px solid #747474;
+            padding: 8px;
+            text-align: center;
+            color: #fff1ef;
+            background-color: #ff3f30;
+        }
+        tr:nth-child(even) {
+            background-color: #F7F7F7; /* 짝수 행 배경색 */
+        }
+        tr:nth-child(odd) {
+            background-color: #FFFFFF; /* 홀수 행 배경색 */
+        }
+        td {
+            border: 1px solid #b1a7a6;
+            padding: 8px;
+            text-align: left;
+        }
+        .td_center {
+            text-align: center;
+        }
+        thead th:first-child {
+            border-top-left-radius: 5px;
+        }
+        thead th:last-child {
+            border-top-right-radius: 5px;
+        }
+        tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 5px;
+        }
+        tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-<h1>Recommended Hospitals</h1>
-
-<table border="1">
+<h1>추천 병원 리스트</h1>
+<table>
     <thead>
     <tr>
         <th>#</th>
@@ -15,22 +71,25 @@
         <th>Emergency Type</th>
         <th>Phone 1</th>
         <th>Phone 3</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
         <th>Distance (km)</th>
     </tr>
     </thead>
     <tbody>
     <!-- 병원 목록 반복 -->
     <tr th:each="hospital, iterStat : ${hospitalList}">
-        <td th:text="${iterStat.index + 1}"></td>
+        <td class="td_center" th:text="${iterStat.index + 1}"></td>
         <td th:text="${hospital.hospitalName}"></td>
         <td th:text="${hospital.address}"></td>
         <td th:text="${hospital.emergencyMedicalInstitutionType}"></td>
         <td th:text="${hospital.phoneNumber1}"></td>
         <td th:text="${hospital.phoneNumber3}"></td>
-        <td th:text="${hospital.distance} + ' km'"></td>
+        <td th:text="${hospital.latitude}"></td>
+        <td th:text="${hospital.longitude}"></td>
+        <td class="td_center" th:text="${hospital.distance} + ' km'"></td>
     </tr>
     </tbody>
 </table>
-
 </body>
 </html>
